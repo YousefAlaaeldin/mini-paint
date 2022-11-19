@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 
-public class DrawingEngine1 extends JPanel implements DrawingEngine{
+public class MyPanel extends JPanel implements DrawingEngine{
     private ArrayList<Shape> shapes;
 
-    public void DrawingEngine1(){
+    public void MyPanel(){
         shapes = new ArrayList<>();
     }
     @Override
@@ -33,7 +33,7 @@ public class DrawingEngine1 extends JPanel implements DrawingEngine{
         return shapes.toArray(Shape[]::new);
     }
 
-    @Override //not implementer yet
+    @Override 
     public void refresh(Graphics canvas) {
         repaint();
     }

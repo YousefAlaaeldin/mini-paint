@@ -9,9 +9,9 @@ public class LineSegmentInput extends JFrame implements Node{
     private Node parentNode;
     private final LineSegment lineSegment;
     private Color color;
-    private  DrawingEngine1 engine;
+    private  DrawingEngine engine;
    // private LineDrawing  ;
-    public LineSegmentInput(DrawingEngine1 engine) {
+    public LineSegmentInput(DrawingEngine engine) {
         initComponents();
         parentNode = null;
         lineSegment = new LineSegment();
@@ -219,8 +219,9 @@ public class LineSegmentInput extends JFrame implements Node{
         else {
             lineSegment.setPosition(new Point(Integer.parseInt(x1.getText()), Integer.parseInt(y1.getText())), new Point(Integer.parseInt(x2.getText()), Integer.parseInt(y2.getText())));
             lineSegment.setColor(this.color);
-            engine.addShape(lineSegment);
-            engine.refresh(null);
+            ((MyPanel)engine).addShape(lineSegment);
+            
+            ((MyPanel)engine).refresh(null);
                 }   
     }//GEN-LAST:event_ADDBUTTONActionPerformed
 
