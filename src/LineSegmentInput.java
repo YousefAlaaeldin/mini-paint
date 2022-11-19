@@ -9,16 +9,12 @@ public class LineSegmentInput extends JFrame implements Node{
     private Node parentNode;
     private final LineSegment lineSegment;
     private Color color;
-    private  DrawingEngine engine;
-   // private LineDrawing  ;
-    public LineSegmentInput(DrawingEngine engine) {
+    private boolean isCreated;
+    public LineSegmentInput(LineSegment lineSegment) {
         initComponents();
         parentNode = null;
-        lineSegment = new LineSegment();
-        this.engine = engine;
-    }
-    public LineSegment getLineSegment(){
-        return this.lineSegment;
+        this.lineSegment = lineSegment;
+        this.isCreated = false;
     }
             
     @SuppressWarnings("unchecked")
@@ -100,6 +96,11 @@ public class LineSegmentInput extends JFrame implements Node{
         });
 
         chossedColorButton.setBackground(new java.awt.Color(0, 0, 0));
+        chossedColorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chossedColorButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,8 +152,7 @@ public class LineSegmentInput extends JFrame implements Node{
                             .addComponent(y1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
@@ -181,6 +181,9 @@ public class LineSegmentInput extends JFrame implements Node{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean Iscrested(){
+        return this.isCreated;
+    } 
     public static boolean isNumeric(String stringNum){
         try{
             int x = Integer.parseInt(stringNum);
@@ -200,13 +203,13 @@ public class LineSegmentInput extends JFrame implements Node{
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        this.setVisible(false);
-       ((JFrame)getParentNode()).setVisible(true);
-       //this.drawingPanel.repaint();
        x1.setText("");
        x2.setText("");
        y1.setText("");
        y2.setText("");
+       this.color = Color.BLACK;
+        this.setVisible(false);
+       ((JFrame)getParentNode()).setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void ADDBUTTONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADDBUTTONActionPerformed
@@ -218,12 +221,21 @@ public class LineSegmentInput extends JFrame implements Node{
         }
         else {
             lineSegment.setPosition(new Point(Integer.parseInt(x1.getText()), Integer.parseInt(y1.getText())), new Point(Integer.parseInt(x2.getText()), Integer.parseInt(y2.getText())));
-            lineSegment.setColor(this.color);
-            ((MyPanel)engine).addShape(lineSegment);
-            
-            ((MyPanel)engine).refresh(null);
-                }   
+            lineSegment.setColor(this.color);  
+            x1.setText("");
+            x2.setText("");
+            y1.setText("");
+            y2.setText("");
+            this.isCreated = true;
+            this.setVisible(false);
+            ((JFrame)getParentNode()).setVisible(true);
+            this.color = Color.BLACK;
+        }
     }//GEN-LAST:event_ADDBUTTONActionPerformed
+
+    private void chossedColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chossedColorButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chossedColorButtonActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
