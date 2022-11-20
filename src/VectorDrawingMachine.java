@@ -167,11 +167,11 @@ public class VectorDrawingMachine extends JFrame implements Node{
         lineSegmentInput.setTitle("Line Segment Data");
         this.setVisible(false);
         lineSegmentInput.setVisible(true);
-        System.err.println(lineSegmentInput.Iscrested());
+        //System.err.println(lineSegmentInput.Iscrested());
         myPanel1.addShape(lineSegment);
         compobox.addItem("Line" + myPanel1.getShapes().length);   
 
-        System.err.println(lineSegmentInput.Iscrested());
+      //  System.err.println(lineSegmentInput.Iscrested());
 
         myPanel1.refresh(null);
         
@@ -180,10 +180,35 @@ public class VectorDrawingMachine extends JFrame implements Node{
 
     private void RectangleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RectangleButtonActionPerformed
         // TODO add your handling code here:
+        Rectangle rectangle =  new Rectangle(0,0);
+        RectangleInput rectangleInput = new RectangleInput(rectangle);
+        rectangle.setColor(Color.BLACK);
+        rectangle.setFillColor(Color.BLACK);
+        rectangle.setPosition(new  Point(0,0));
+        rectangleInput.setParentNode(this);
+        rectangleInput.setVisible(true);
+        this.setVisible(false);
+        
+        myPanel1.addShape(rectangle);
+        compobox.addItem("rectangle" + (myPanel1.getShapes()).length);
+        myPanel1.refresh(null);
     }//GEN-LAST:event_RectangleButtonActionPerformed
 
     private void SquareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SquareButtonActionPerformed
         // TODO add your handling code here:
+        Square square = new Square();
+        SquareInput squareInput = new SquareInput(square);
+        square.setLength(0);
+        square.setColor(Color.BLACK);
+        square.setFillColor(Color.BLACK);
+        square.setPosition(new  Point(0,0));
+        squareInput.setParentNode(this);
+        squareInput.setVisible(true);
+        this.setVisible(false);
+        
+        myPanel1.addShape(square);
+        compobox.addItem("square" + (myPanel1.getShapes()).length);
+        myPanel1.refresh(null);
     }//GEN-LAST:event_SquareButtonActionPerformed
 
     private void circleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circleButtonActionPerformed
@@ -239,7 +264,38 @@ public class VectorDrawingMachine extends JFrame implements Node{
             myPanel1.refresh(null);
         }
     }//GEN-LAST:event_DeleteButtonActionPerformed
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VectorDrawingMachine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VectorDrawingMachine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VectorDrawingMachine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VectorDrawingMachine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new VectorDrawingMachine().setVisible(true);
+            }
+        });
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

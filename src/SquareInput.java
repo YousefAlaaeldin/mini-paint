@@ -7,17 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-public class CircleInput extends JFrame implements Node{
-    
-    private Circle circle;
+public class SquareInput extends JFrame implements Node{
     private Color fillColor;
     private Color borderColor;
     private Node parentNode;
-    
-    public CircleInput(Circle circle) {
+    private Square square;
+    public SquareInput(Square square) {
         initComponents();
-        this.circle = circle;
-        parentNode  = null;
+        this.square = square;
+        this.parentNode = null;
     }
 
       public static boolean isNumeric(String stringNum){
@@ -29,6 +27,7 @@ public class CircleInput extends JFrame implements Node{
             return false;
         }
     }
+      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -47,14 +46,9 @@ public class CircleInput extends JFrame implements Node{
         CHOOSEDBORDERCOLOR = new javax.swing.JButton();
         BrodercolorButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        raduis = new javax.swing.JTextField();
+        length_input = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setBackground(new java.awt.Color(255, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -121,7 +115,7 @@ public class CircleInput extends JFrame implements Node{
 
         jLabel7.setBackground(new java.awt.Color(255, 204, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Raduis");
+        jLabel7.setText("length");
         jLabel7.setOpaque(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -140,7 +134,7 @@ public class CircleInput extends JFrame implements Node{
                             .addComponent(ADDBUTTON, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(FillcolorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -153,7 +147,7 @@ public class CircleInput extends JFrame implements Node{
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(69, 69, 69)
-                                .addComponent(raduis))
+                                .addComponent(length_input))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -175,7 +169,7 @@ public class CircleInput extends JFrame implements Node{
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(x1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 34, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(y1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -185,7 +179,7 @@ public class CircleInput extends JFrame implements Node{
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(raduis, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(length_input, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(91, 91, 91)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +217,7 @@ public class CircleInput extends JFrame implements Node{
 
     private void FillcolorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FillcolorButtonActionPerformed
         // taking color input
-        Color thisColorr = JColorChooser.showDialog(null, "enter fill circle color", Color.black);
+        Color thisColorr = JColorChooser.showDialog(null, "enter fill square color", Color.black);
         this.fillColor = thisColorr;
         CHOOSEDFILLCOLOR.setBackground(this.fillColor);
         this.isVisible();
@@ -231,18 +225,18 @@ public class CircleInput extends JFrame implements Node{
 
     private void ADDBUTTONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADDBUTTONActionPerformed
         // TODO add your handling code here:
-        if(x1.getText().isEmpty() ||raduis.getText().isEmpty() || y1.getText().isEmpty() )
+        if(x1.getText().isEmpty() ||length_input.getText().isEmpty() || y1.getText().isEmpty() )
         JOptionPane.showMessageDialog(null, "some fields are empty");
-        else if( !isNumeric(x1.getText() ) || !isNumeric(y1.getText()) || !isNumeric(raduis.getText()) ){
+        else if( !isNumeric(x1.getText() ) || !isNumeric(y1.getText()) || !isNumeric(length_input.getText()) ){
             JOptionPane.showMessageDialog(null, "some fields are are not number");
         }
         else {
-            circle.setRaduis((Integer.parseInt((this.raduis).getText())));
-            circle.setColor(this.borderColor);
-            circle.setFillColor(this.fillColor);
-            circle.setPosition(new Point(Integer.parseInt(x1.getText()),Integer.parseInt(y1.getText())));
+            square.setLength((Integer.parseInt((this.length_input).getText())));
+            square.setColor(this.borderColor);
+            square.setFillColor(this.fillColor);
+            square.setPosition(new Point(Integer.parseInt(x1.getText()),Integer.parseInt(y1.getText())));
             x1.setText("");
-            raduis.setText("");
+            length_input.setText("");
             y1.setText("");
             this.setVisible(false);
             ((JFrame)getParentNode()).setVisible(true);
@@ -261,22 +255,11 @@ public class CircleInput extends JFrame implements Node{
 
     private void BrodercolorButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrodercolorButton1ActionPerformed
         // TODO add your handling code here:
-        Color thisColorr = JColorChooser.showDialog(null, "enter circle border color", Color.black);
+        Color thisColorr = JColorChooser.showDialog(null, "enter square border color", Color.black);
         this.borderColor = thisColorr;
         CHOOSEDBORDERCOLOR.setBackground(this.borderColor);
         this.isVisible();
     }//GEN-LAST:event_BrodercolorButton1ActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        x1.setText("");
-        raduis.setText("");
-        y1.setText("");
-        this.fillColor = Color.BLACK;
-        this.borderColor = Color.BLACK;
-        this.setVisible(false);
-       ((JFrame)getParentNode()).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -292,7 +275,7 @@ public class CircleInput extends JFrame implements Node{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField raduis;
+    private javax.swing.JTextField length_input;
     private javax.swing.JTextField x1;
     private javax.swing.JTextField y1;
     // End of variables declaration//GEN-END:variables
@@ -300,12 +283,10 @@ public class CircleInput extends JFrame implements Node{
     @Override
     public void setParentNode(Node parentNode) {
         this.parentNode = parentNode;
-
     }
 
     @Override
     public Node getParentNode() {
-        return parentNode;
+        return this.parentNode;
     }
-    
 }

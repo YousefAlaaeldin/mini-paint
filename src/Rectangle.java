@@ -7,6 +7,7 @@ public class Rectangle  extends AbstractShape{
     private int heigth;
    
     public Rectangle(int width , int heigth){
+        super();
         this.heigth = heigth;
         this.width = width;
     }

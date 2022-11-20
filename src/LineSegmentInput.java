@@ -5,16 +5,17 @@ import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 public class LineSegmentInput extends JFrame implements Node{
     private Node parentNode;
     private final LineSegment lineSegment;
     private Color color;
-    private boolean isCreated;
+   // private boolean isCreated;
     public LineSegmentInput(LineSegment lineSegment) {
         initComponents();
         parentNode = null;
         this.lineSegment = lineSegment;
-        this.isCreated = false;
+     //   this.isCreated = false;
     }
             
     @SuppressWarnings("unchecked")
@@ -181,9 +182,9 @@ public class LineSegmentInput extends JFrame implements Node{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean Iscrested(){
-        return this.isCreated;
-    } 
+   // public boolean Iscrested(){
+     //   return this.isCreated;
+   // } 
     public static boolean isNumeric(String stringNum){
         try{
             int x = Integer.parseInt(stringNum);
@@ -226,7 +227,7 @@ public class LineSegmentInput extends JFrame implements Node{
             x2.setText("");
             y1.setText("");
             y2.setText("");
-            this.isCreated = true;
+       //   this.isCreated = true;
             this.setVisible(false);
             ((JFrame)getParentNode()).setVisible(true);
             this.color = Color.BLACK;
